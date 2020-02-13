@@ -1,9 +1,19 @@
-import RPi.GPIO as GPIO
+#!/usr/bin/python
+import Adafruit_BBIO.GPIO as GPIO
 import time
 
-GPIO.setmode(GPIO.BCM)
-
-HEXDIGITS = [0x3f, 0x06, 0x5b, 0x4f, 0x66, 0x6d, 0x7d, 0x07, 0x7f, 0x6f]
+HEXDIGITS = {
+     '0': 0x3f,
+     '1': 0x06,
+     '2': 0x5b,
+     '3': 0x4f,
+     '4': 0x66,
+     '5': 0x6d,
+     '6': 0x7d,
+     '7': 0x07,
+     '8': 0x7f,
+     '9': 0x6f,
+}
 
 HEXLETTERS = {
     'A': 0x77,
@@ -34,12 +44,6 @@ HEXLETTERS = {
     'Y': 0x66,
     'Z': 0x5b,
     ' ': 0x00,
-    'T1': 0x07,
-    'T2': 0x31,
-    'M1': 0x33,
-    'M2': 0x27,
-    'W1': 0x3c,
-    'W2': 0x1e,
 }
 
 ADDR_AUTO = 0x40
@@ -53,7 +57,6 @@ INPUT = GPIO.IN
 LOW = GPIO.LOW
 HIGH = GPIO.HIGH
 
-
 class TM1637:
     __doublepoint = False
     __clk_pin = 0
@@ -61,7 +64,7 @@ class TM1637:
     __brightness = BRIGHT_DEFAULT
     __current_data = [' ', ' ', ' ', ' ']
 
-    def __init__(self, clock_pin, data_pin, brightness=BRIGHT_DEFAULT):
+    def __init__(self, clock_pin, data_pin, brightness=BRIGHT_DARKEST):
         self.__clk_pin = clock_pin
         self.__data_pin = data_pin
         self.__brightness = brightness
