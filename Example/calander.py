@@ -3,15 +3,10 @@ import tm1637
 from time import *
 import Adafruit_BBIO.GPIO as GPIO
 
-
 # CLK == Shared
 # DIO == GPIO PIN
 # GND == External Power
 # 5v  == External Power
-
-
-
-
 
 # Setup the pins for two LED's (AM/PM)
 GPIO.setup("P8_8", GPIO.OUT)
@@ -150,15 +145,9 @@ while True:
    else:
       x=True
 
-   
-   
-   
 ShowTime.clear()
 ShowTime.cleanup()
 ShowDate.Clear()
 ShowDate.Cleanup()
 ShowYear.Clear()
 ShowYear.Cleanup()
-
-
-
