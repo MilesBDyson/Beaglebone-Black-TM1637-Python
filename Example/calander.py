@@ -3,8 +3,8 @@ import tm1637
 from time import *
 import Adafruit_BBIO.GPIO as GPIO
 
-# CLK == Shared
-# DIO == GPIO PIN
+# CLK == Shared P9_12
+# DIO == GPIO PIN P9_23
 # GND == External Power
 # 5v  == External Power
 
@@ -147,7 +147,7 @@ while True:
 
 ShowTime.clear()
 ShowTime.cleanup()
-ShowDate.Clear()
-ShowDate.Cleanup()
-ShowYear.Clear()
-ShowYear.Cleanup()
+ShowDate.clear()
+ShowDate.cleanup()
+ShowYear.clear()
+ShowYear.cleanup()

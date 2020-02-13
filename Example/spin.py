@@ -2,8 +2,10 @@ import tm1637
 import Adafruit_BBIO.GPIO as GPIO
 import time
 
-
-
+# CLK == Shared P9_12
+# DIO == GPIO PIN P9_23
+# GND == External Power
+# 5v  == External Power
 
 GPIO.setup("P9_12", GPIO.OUT)
 GPIO.output("P9_12", GPIO.LOW)

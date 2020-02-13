@@ -2,6 +2,19 @@
 import Adafruit_BBIO.GPIO as GPIO
 import time
 
+HEXDECIMAL = {
+     '0.': 0xbf,
+     '1.': 0x86,
+     '2.': 0xdb,
+     '3.': 0xcf,
+     '4.': 0xe6,
+     '5.': 0xed,
+     '6.': 0xfd,
+     '7.': 0x87,
+     '8.': 0xff,
+     '9.': 0xef
+}
+
 HEXDIGITS = {
      '0': 0x3f,
      '1': 0x06,
@@ -12,7 +25,7 @@ HEXDIGITS = {
      '6': 0x7d,
      '7': 0x07,
      '8': 0x7f,
-     '9': 0x6f,
+     '9': 0x6f
 }
 
 HEXLETTERS = {
@@ -44,7 +57,7 @@ HEXLETTERS = {
     'Y': 0x66,
     'Z': 0x5b,
     ' ': 0x00,
-    '\xc2\xb0': 0x63,
+   '\xc2\xb0': 0x63,
     '-': 0x40,
     '_': 0x08,
     '^': 0x23,
@@ -101,7 +114,6 @@ class TM1637:
     def set_values(self, data):
         for i in range(4):
             self.__current_data[i] = data[i]
-
         self.start()
         self.write_byte(ADDR_AUTO)
         self.stop()
@@ -117,9 +129,7 @@ class TM1637:
     def set_value(self, value, index):
         if index not in range(4):
             pass
-
         self.__current_data[index] = value;
-
         self.start()
         self.write_byte(ADDR_FIXED)
         self.stop()
@@ -134,9 +144,9 @@ class TM1637:
     def set_brightness(self, brightness):
         if brightness not in range(8):
             pass
-
         self.__brightness = brightness
         self.set_values(self.__current_data)
+        self.__current_data = [' ', ' ', ' ', ' ']
 
     def set_doublepoint(self, value):
         self.__doublepoint = value
@@ -149,8 +159,10 @@ class TM1637:
             data = 0
         elif HEXLETTERS.has_key(data):
             data = HEXLETTERS[data] + point
-        else:
+        elif HEXDIGITS.has_key(data):
             data = HEXDIGITS[data] + point
+        else:
+            data = HEXDECIMAL[data] + point
         return data
 
     def write_byte(self, data):
@@ -169,7 +181,7 @@ class TM1637:
         GPIO.setup(self.__data_pin, INPUT)
 
         while GPIO.input(self.__data_pin):
-            time.sleep(0.001)
+            #time.sleep(0.001)
             if GPIO.input(self.__data_pin):
                 GPIO.setup(self.__data_pin, OUTPUT)
                 GPIO.output(self.__data_pin, LOW)

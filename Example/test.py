@@ -1,6 +1,15 @@
 import tm1637
+import Adafruit_BBIO.GPIO as GPIO
 
-disp = tm1637.TM1637(3, 2)
+# Use the Enter key to display the next set of characters
+# CLK == Shared P9_12
+# DIO == GPIO PIN P9_23
+# GND == External Power
+# 5v  == External Power
+
+disp = tm1637.TM1637("P9_12", "P9_23")
+
+disp.clear()
 
 disp.set_values(['A', 'B', 'b', 'C'])
 r = raw_input()
@@ -32,14 +41,7 @@ r = raw_input()
 disp.set_value('M2', 1)
 r = raw_input()
 
-disp.set_values(range(4))
-r = raw_input()
-
-disp.set_values(range(4, 8))
-r = raw_input()
-
-disp.set_values(range(6, 10))
-r = raw_input()
+disp.clear()
 
 x = True
 for i in range(8):

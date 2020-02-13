@@ -2,6 +2,12 @@
 import tm1637
 from time import *
 import Adafruit_BBIO.GPIO as GPIO
+
+# CLK == Shared P9_12
+# DIO == GPIO PIN P9_23
+# GND == External Power
+# 5v  == External Power
+
 # Setup Pins for LED's used for Time (AM/PM)
 GPIO.setup("P8_26", GPIO.OUT)
 GPIO.setup("P8_18", GPIO.OUT)
@@ -17,7 +23,7 @@ LastTime1='0'
 LastTime2='0'
 LastTime3='0'
 LastTime4='0'
-UpdateTime-False
+UpdateTime=False
 while True:
    # Get Current Time
    hour=strftime('%I')
@@ -33,16 +39,16 @@ while True:
    # Check if Time Needs Updated 
    if Time1 != LastTime1:
       LastTime1=Time1
-      UpdateTime-True
+      UpdateTime=True
    if Time2 != LastTime2:
       LastTime2=Time2
-      UpdateTime-True
+      UpdateTime=True
    if Time3 != LastTime3:
       LastTime3=Time3
-      UpdateTime-True
+      UpdateTime=True
    if Time4 != LastTime4:
       LastTime4=Time4
-      UpdateTime-True
+      UpdateTime=True
    if ampm == 'PM':
       GPIO.output("P8_18", GPIO.LOW)
       GPIO.output("P8_26", GPIO.HIGH)
@@ -50,8 +56,8 @@ while True:
       GPIO.output("P8_26", GPIO.LOW)
       GPIO.output("P8_18", GPIO.HIGH)
    # Update Time as Needed
-   if UpdateTime-=True:
-      UpdateTime-False
+   if UpdateTime == True:
+      UpdateTime=False
       ShowTime.set_values([Time1, Time2, Time3, Time4])
    # Flash Colon for Time
    ShowTime.set_doublepoint(x)
