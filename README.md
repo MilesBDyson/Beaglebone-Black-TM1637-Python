@@ -11,6 +11,6 @@ Python files for TM1637 7-segment display module for Beaglebone Black. Supports 
 | 5v             | 4         | External Power, VDD\_5v   |
 
 ![Calander](images/tm1637.JPG)
-![Clock](images/tm1637 clock.jpg)
-![Decimal](images/tm1637 decimal.jpg)
+![Clock](images/tm1637-clock.jpg)
+![Decimal](images/tm1637-decimal.jpg)
 ![Back](images/tm1637-back.jpeg)
