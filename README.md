@@ -12,5 +12,5 @@ Python files for TM1637 7-segment display module for Beaglebone Black. Supports 
 
 ![Calander](images/tm1637.JPG)
 ![Clock](images/tm1637 clock.jpg)
-![Decimal](images/ttm1637 decimal.jpg)
+![Decimal](images/tm1637 decimal.jpg)
 ![Back](images/tm1637-back.jpeg)
