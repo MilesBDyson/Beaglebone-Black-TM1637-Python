@@ -9,7 +9,7 @@ Note: because of the need to use an external power source for this module, you m
 |----------------|-----------| --------------------------|
 | CLK            | 1         | P9\_12, GPIO              |
 | DIO            | 2         | P9\_23, GPIO              |
-| GND            | 3         | External Power, Ground    | <-- must be shared with Beaglebone Black
+| GND            | 3         | External Power, Ground    |
 | 5v             | 4         | External Power, VDD\_5v   |
 
 ![Calander](images/tm1637.JPG)
